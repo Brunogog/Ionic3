@@ -6,9 +6,13 @@ import { PhotoService } from '../services/photo.service';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
+
 export class Tab2Page {
 
   constructor(private photoService: PhotoService) { }
+
+
+  async ngOnInit() { }
 
   async tirarFoto() {
     this.photoService.addNewToGallery();

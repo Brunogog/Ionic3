@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-tab3',
@@ -8,18 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 })
 export class Tab3Page {
 
-  constructor(private geolocation: Geolocation) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.geolocation.getCurrentPosition().then(
-      (resp) => {
-        console.log(resp);
-      }).catch((error) =>
-        console.log("Error")
-      )
-    let watch = this.geolocation.watchPosition();
-    watch.subscribe((data) =>
-      console.log(data)
-    )
-  }
+  ngOnInit() { }
 }

@@ -3,6 +3,8 @@ import { Platform } from '@ionic/angular';
 import { NativeStorage } from '@ionic-native/native-storage/ngx'
 import { ThrowStmt } from '@angular/compiler';
 import { error } from '@angular/compiler/src/util';
+import { PessoasService } from '../model/pessoas.service';
+import { Pessoas } from '../model/pessoas.model';
 
 @Component({
   selector: 'app-tab1',
@@ -11,9 +13,25 @@ import { error } from '@angular/compiler/src/util';
 })
 export class Tab1Page {
 
-  constructor(private nativeStorage: NativeStorage, private platform: Platform) { }
+  pessoas: Pessoas
+  ListaPessoas: Pessoas[]
+  aux: any
 
-  ngOnInit() {
+  constructor(
+    private nativeStorage: NativeStorage,
+    private platform: Platform,
+    private pessoasService: PessoasService
+  ) { }
+
+  async ngOnInit() {
+    let receber = await this.pessoasService.getJSON();
+    console.log(receber)
+    this.aux = receber;
+    this.ListaPessoas = this.aux;
+
+    let position = await this.pessoasService.findPessoasProximos();
+    console.log(position);
+
     let key = "Time";
     console.log(this.platform);
     if (this.platform.is('hybrid')) {

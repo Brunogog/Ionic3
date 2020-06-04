@@ -12,6 +12,27 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid *ngFor="let pessoa of ListaPessoas" class="displayOff">
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label>{{pessoa.first_name}} {{pessoa.last_name}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>{{pessoa.email}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>{{pessoa.gender}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>{{pessoa.latitude}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>{{pessoa.longitude}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
